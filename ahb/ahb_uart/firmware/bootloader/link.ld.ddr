@@ -43,14 +43,14 @@ SECTIONS
         _vectors_start = .;
         KEEP(*(.vectors))
         _vectors_end = .;
-    } > tim0
+    } > ddr
 
     .text :
     {
         . = ALIGN(4);
         *(.text)
         *(.text.*)
-    }  > tim0
+    }  > ddr
 
     .rodata :
     {
@@ -60,7 +60,7 @@ SECTIONS
         *(.srodata.*)
         *(.rodata);
         *(.rodata.*)
-    } > tim0
+    } > ddr
 
     .data :
     {
@@ -70,14 +70,14 @@ SECTIONS
         *(.sdata.*)
         *(.data);
         *(.data.*)
-    } > tim0
+    } > ddr
 
     .sdata :
     {
         __global_pointer$ = . + 0x400;
         *(.srodata.cst16) *(.srodata.cst8) *(.srodata.cst4) *(.srodata.cst2) *(.srodata*)
         *(.sdata .sdata.* .gnu.linkonce.s.*)
-    } > tim0
+    } > ddr
 
     .bss :
     {
@@ -90,7 +90,7 @@ SECTIONS
         *(.bss.*)
         *(COMMON)
         _bss_end = .;
-    } > tim0
+    } > ddr
 
 
     /* ensure there is enough room for stack */
@@ -99,5 +99,5 @@ SECTIONS
         . = ALIGN(4);
         . = . + _min_stack ;
         _stack_start = . ;
-    } > tim0
+    } > ddr
 }
