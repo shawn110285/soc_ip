@@ -11,7 +11,7 @@
   800073A0;
 '''
 
-# example: python3 makecoe.py bootrom.bin > bootrom.coe
+# example: python3 bin2coe.py bootrom.bin > bootrom.coe
 
 from sys import argv
 
