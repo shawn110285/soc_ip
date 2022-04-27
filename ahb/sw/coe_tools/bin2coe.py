@@ -2,7 +2,7 @@
 #
 
 # coe file format
-''' 
+'''
   MEMORY_INITIALIZATION_RADIX=16;
   memory_initialization_vector =
   B7014000,
@@ -11,7 +11,7 @@
   800073A0;
 '''
 
-# example: python3 bin2coe.py bootrom.bin > bootrom.coe
+# example: python3 makecoe.py bootrom.bin > bootrom.coe
 
 from sys import argv
 
@@ -28,13 +28,13 @@ print("memory_initialization_vector = ")
 for i in range( len(bindata) // 4):
     w = bindata[4*i : 4*i+4]
     if(swapped == 1):
-        if( (i == (len(bindata)//4 -1)) && ((4*i+4) == len(bindata))):
+        if( (i == len(bindata)//4 -1) and ((4*i+4) == len(bindata)) ):
 		    #print an end mark in the end of file
             print("%02x%02x%02x%02x;" % (w[3], w[2], w[1], w[0]))
         else:
             print("%02x%02x%02x%02x," % (w[3], w[2], w[1], w[0]))
     else:
-        if( (i == (len(bindata)//4 -1)) && ((4*i+4) == len(bindata))):
+        if( (i == len(bindata)//4 -1 ) and ((4*i+4) == len(bindata)) ):
 		    #print an end mark in the end of file
             print("%02x%02x%02x%02x;" % (w[0], w[1], w[2], w[3]))
         else:
@@ -46,4 +46,6 @@ if ((4*i+4) < len(bindata)) :
     if(swapped == 1):
         print("%02x%02x%02x%02x;" % (w[1], w[0]))
     else:
-        print("%02x%02x%02x%02x;" % (w[0], w[1]))	 
+        print("%02x%02x%02x%02x;" % (w[0], w[1]))
+
+print("remove this line from the coe file, totoal_size (bytes)={:d}".format(len(bindata)))
