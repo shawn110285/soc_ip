@@ -10,7 +10,7 @@
   0130B701,
   800073A0;
 '''
-
+# checked with the cmd: xxd ./bootrom_ddr.bin
 # example: python3 makecoe.py bootrom.bin > bootrom.coe
 
 from sys import argv
